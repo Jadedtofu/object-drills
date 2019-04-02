@@ -58,5 +58,7 @@ let frodoBaggins = createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shir
 let aragornSonOfArathorn = createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8);
 let legolas = createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5);
 characters.push(gandalfTheWhite, bilboBaggins, frodoBaggins, aragornSonOfArathorn, legolas); // adding to array
+let arwenUndomiel = createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 5, 4);
+characters.push(arwenUndomiel);
 console.log(characters);
 
