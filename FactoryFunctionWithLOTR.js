@@ -25,22 +25,38 @@ function createCharacter(name, nickname, race, origin, attack, defense) {
         attack: attack,
         defense: defense,
         describe: function() {
-            return `${this.name} is a ${this.race} from ${this.origin}.`;
+            console.log(`${this.name} is a ${this.race} from ${this.origin}.`);
         },
         evaluateFight: function(character) {
-            let damageTaken = character.attack - this.defense;  //char opponent vs factory char
-            let enemyDmgTaken = this.attack - character.defense; //factory char vs char opponent
-            return `Your opponent takes ${enemyDmgTaken} damage and you receive ${damageTaken} damage.`;
+            let charDmgTaken;
+                if (character.attack <= this.defense) {     //character opponent vs factory char
+                    charDmgTaken = 0;                
+                } else {
+                    charDmgTaken = character.attack - this.defense; 
+                    }
+            let enemyDmgTaken;
+                if (this.attack <= character.defense) {     //factory char vs char opponent
+                    enemyDmgTaken = 0;
+                } else {
+                    enemyDmgTaken = this.attack - character.defense;
+                    }
+            console.log(`Your opponent takes ${enemyDmgTaken} damage and you receive ${charDmgTaken} damage.`);
             // ex: If char Gandalf ATTK (10) vs char Aragorn DEF (8) --> Aragorn takes 2 DMG
             // ex2: If char Legolas ATTK (8) vs char Aragorn DEF (8) --> Aragorn takes 0 DMG
-            // we need to know the difference between each character's attack and defense value
-            // we need an equation that says ATTK - DEF = DMG (but for 2 diff characters)
-            // Where x and y are the differences between each characters attack and defense values. 
-            //If defense exceeds attack, then take zero damage.
+            // we need an equation that says ATTK - DEF = DMG (for 2 diff characters [character vs factory char])
+            // If defense exceeds attack, then take zero damage.
         }
     };
-    console.log(character);
+    return character;
 }
-createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5);
+// createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5);
+// make a STORE <-- an object that stores all the data (?)
+let characters = [];        // array literal
+let gandalfTheWhite = createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6);
+let bilboBaggins = createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1);
+let frodoBaggins = createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2);
+let aragornSonOfArathorn = createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8);
+let legolas = createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5);
+characters.push(gandalfTheWhite, bilboBaggins, frodoBaggins, aragornSonOfArathorn, legolas); // adding to array
+console.log(characters);
 
-// make a STORE <-- an object that stores all the data
